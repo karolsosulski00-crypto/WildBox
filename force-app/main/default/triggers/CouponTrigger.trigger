@@ -16,7 +16,13 @@ trigger CouponTrigger on Coupon__c (after update) {
         return;
     }
 
-    List<Contact> contactsToEmail = [SELECT Id, FirstName, Email FROM Contact WHERE Email != null AND HasOptedOutOfEmail = false
+    List<Contact> contactsToEmail = [
+        SELECT Id, FirstName, Email 
+        FROM Contact 
+        WHERE Email != null 
+        AND HasOptedOutOfEmail = false
+        ORDER BY CreatedDate DESC
+        LIMIT 15 
     ];
 
     if (contactsToEmail.isEmpty()) {

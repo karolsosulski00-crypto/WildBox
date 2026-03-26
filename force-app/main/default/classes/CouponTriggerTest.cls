@@ -60,7 +60,7 @@ private class CouponTriggerTest {
     @isTest
     static void testNoEmailForOptedOutContacts() {
         Contact c = new Contact(
-            LastName = 'Ostry',
+            LastName = 'Ostry', 
             Email = 'test3@example.com',
             HasOptedOutOfEmail = true
         );
